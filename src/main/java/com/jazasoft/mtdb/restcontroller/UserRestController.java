@@ -2,9 +2,11 @@ package com.jazasoft.mtdb.restcontroller;
 
 import com.jazasoft.mtdb.IApiUrls;
 import com.jazasoft.mtdb.IConfigKeys;
+import com.jazasoft.mtdb.dto.RestError;
 import com.jazasoft.mtdb.model.User;
 import com.jazasoft.mtdb.service.UserService;
 import com.jazasoft.mtdb.specification.CustomRsqlVisitor;
+import com.jazasoft.seltest.ApiUrls;
 import cz.jirutka.rsql.parser.RSQLParser;
 import cz.jirutka.rsql.parser.ast.Node;
 import org.slf4j.Logger;
@@ -73,6 +75,20 @@ public class UserRestController {
         user = userService.save(user);
         return new ResponseEntity<>(user, HttpStatus.CREATED);
     }
+
+    @GetMapping(ApiUrls.URL_USERS_PROFILE)
+    public ResponseEntity<?> profile(HttpServletRequest request) {
+        logger.debug("profile()");
+        Number userId = (Number) request.getAttribute(IConfigKeys.REQ_ATTRIBUTE_KEY_USER_ID);
+        if (userId != null) {
+            User user = userService.findOne(userId.longValue());
+            return ResponseEntity.ok(user);
+        } else {
+            RestError error = new RestError(401, 401, "Unable to extract user id from token");
+            return new ResponseEntity<>(error, HttpStatus.UNAUTHORIZED);
+        }
+    }
+
 //
 //    @PatchMapping(IApiUrls.URL_USERS_USER)
 //    public ResponseEntity<?> update(@PathVariable("userId") long id,@Validated @RequestBody User user) {
