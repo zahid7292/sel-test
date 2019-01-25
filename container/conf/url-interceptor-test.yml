@@ -1,0 +1,108 @@
+#########################################
+######### MASTER ENDPOINTS ##############
+#########################################
+
+- !com.jazasoft.mtdb.dto.UrlInterceptor
+   url: /api/users
+   scopes: !java.util.Arrays$ArrayList
+   - !com.jazasoft.mtdb.dto.Scope
+      method: get
+      type: PROTECTED_ROLE_BASED
+      roles: ADMIN
+      scope: read
+   - !com.jazasoft.mtdb.dto.Scope
+      method: post
+      type: PROTECTED_ROLE_BASED
+      roles: ADMIN
+      scope: write
+
+- !com.jazasoft.mtdb.dto.UrlInterceptor
+   url: /api/users/{\d+}
+   scopes: !java.util.Arrays$ArrayList
+   - !com.jazasoft.mtdb.dto.Scope
+      method: get
+      type: PROTECTED_ROLE_BASED
+      roles: ADMIN
+      scope: read
+   - !com.jazasoft.mtdb.dto.Scope
+      method: put
+      type: PROTECTED_ROLE_BASED
+      roles: ADMIN
+      scope: write
+   - !com.jazasoft.mtdb.dto.Scope
+      method: delete
+      type: PROTECTED_ROLE_BASED
+      roles: ADMIN
+      scope: delete
+
+
+#########################################
+######### TENANT ENDPOINTS ##############
+#########################################
+
+
+- !com.jazasoft.mtdb.dto.UrlInterceptor
+   url: /api/categories
+   scopes: !java.util.Arrays$ArrayList
+   - !com.jazasoft.mtdb.dto.Scope
+      method: get
+      type: PROTECTED_ROLE_BASED
+      roles: ADMIN
+      scope: read
+   - !com.jazasoft.mtdb.dto.Scope
+      method: post
+      type: PROTECTED_ROLE_BASED
+      roles: ADMIN
+      scope: write
+
+- !com.jazasoft.mtdb.dto.UrlInterceptor
+   url: /api/categories/{\d+}
+   scopes: !java.util.Arrays$ArrayList
+   - !com.jazasoft.mtdb.dto.Scope
+      method: get
+      type: PROTECTED_ROLE_BASED
+      roles: ADMIN
+      scope: read
+   - !com.jazasoft.mtdb.dto.Scope
+      method: put
+      type: PROTECTED_ROLE_BASED
+      roles: ADMIN
+      scope: write
+   - !com.jazasoft.mtdb.dto.Scope
+      method: delete
+      type: PROTECTED_ROLE_BASED
+      roles: ADMIN
+      scope: delete
+
+- !com.jazasoft.mtdb.dto.UrlInterceptor
+   url: /api/products
+   scopes: !java.util.Arrays$ArrayList
+   - !com.jazasoft.mtdb.dto.Scope
+      method: get
+      type: PROTECTED_ROLE_BASED
+      roles: ADMIN
+      scope: read
+   - !com.jazasoft.mtdb.dto.Scope
+      method: post
+      type: PROTECTED_ROLE_BASED
+      roles: ADMIN
+      scope: write
+
+- !com.jazasoft.mtdb.dto.UrlInterceptor
+   url: /api/products/{\d+}
+   scopes: !java.util.Arrays$ArrayList
+   - !com.jazasoft.mtdb.dto.Scope
+      method: get
+      type: PROTECTED_ROLE_BASED
+      roles: ADMIN
+      scope: read
+   - !com.jazasoft.mtdb.dto.Scope
+      method: put
+      type: PROTECTED_ROLE_BASED
+      roles: ADMIN
+      scope: write
+   - !com.jazasoft.mtdb.dto.Scope
+      method: delete
+      type: PROTECTED_ROLE_BASED
+      roles: ADMIN
+      scope: delete

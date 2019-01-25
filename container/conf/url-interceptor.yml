@@ -1,0 +1,116 @@
+- !com.jazasoft.mtdb.dto.UrlInterceptor
+   url: ""
+   scopes: !java.util.Arrays$ArrayList
+   - !com.jazasoft.mtdb.dto.Scope
+      method: get
+      type: PUBLIC
+
+- !com.jazasoft.mtdb.dto.UrlInterceptor
+   url: "/static/"
+   exact: false
+   scopes: !java.util.Arrays$ArrayList
+   - !com.jazasoft.mtdb.dto.Scope
+      method: get
+      type: PUBLIC
+
+- !com.jazasoft.mtdb.dto.UrlInterceptor
+   url: /api/users/forgotPassword
+   scopes: !java.util.Arrays$ArrayList
+   - !com.jazasoft.mtdb.dto.Scope
+      method: patch
+      type: PUBLIC
+
+- !com.jazasoft.mtdb.dto.UrlInterceptor
+   url: /api/users/changePassword
+   scopes: !java.util.Arrays$ArrayList
+   - !com.jazasoft.mtdb.dto.Scope
+      method: patch
+      type: AUTHENTICATED
+
+- !com.jazasoft.mtdb.dto.UrlInterceptor
+   url: /api/users/profile
+   scopes: !java.util.Arrays$ArrayList
+   - !com.jazasoft.mtdb.dto.Scope
+      method: get
+      type: AUTHENTICATED
+      scope: read
+   - !com.jazasoft.mtdb.dto.Scope
+      method: patch
+      type: AUTHENTICATED
+      scope: update
+
+
+#########################################
+######### MASTER ENDPOINTS ##############
+#########################################
+
+- !com.jazasoft.mtdb.dto.UrlInterceptor
+   url: /api/tenants
+   scopes: !java.util.Arrays$ArrayList
+   - !com.jazasoft.mtdb.dto.Scope
+      method: get
+      type: PROTECTED_ROLE_BASED
+      roles: MASTER
+      scope: read
+   - !com.jazasoft.mtdb.dto.Scope
+      method: post
+      type: PROTECTED_ROLE_BASED
+      roles: MASTER
+      scope: write
+
+- !com.jazasoft.mtdb.dto.UrlInterceptor
+   url: /api/tenants/{\d+}
+   scopes: !java.util.Arrays$ArrayList
+   - !com.jazasoft.mtdb.dto.Scope
+      method: get
+      type: PROTECTED_ROLE_BASED
+      roles: MASTER
+      scope: read
+   - !com.jazasoft.mtdb.dto.Scope
+      method: put
+      type: PROTECTED_ROLE_BASED
+      roles: MASTER
+      scope: write
+   - !com.jazasoft.mtdb.dto.Scope
+      method: delete
+      type: PROTECTED_ROLE_BASED
+      roles: MASTER
+      scope: delete
+
+- !com.jazasoft.mtdb.dto.UrlInterceptor
+   url: /api/users
+   scopes: !java.util.Arrays$ArrayList
+   - !com.jazasoft.mtdb.dto.Scope
+      method: get
+      type: PROTECTED_ROLE_BASED
+      roles: MASTER
+      scope: read
+   - !com.jazasoft.mtdb.dto.Scope
+      method: post
+      type: PROTECTED_ROLE_BASED
+      roles: MASTER
+      scope: write
+
+- !com.jazasoft.mtdb.dto.UrlInterceptor
+   url: /api/users/{\d+}
+   scopes: !java.util.Arrays$ArrayList
+   - !com.jazasoft.mtdb.dto.Scope
+      method: get
+      type: PROTECTED_ROLE_BASED
+      roles: MASTER
+      scope: read
+   - !com.jazasoft.mtdb.dto.Scope
+      method: put
+      type: PROTECTED_ROLE_BASED
+      roles: MASTER
+      scope: write
+   - !com.jazasoft.mtdb.dto.Scope
+      method: delete
+      type: PROTECTED_ROLE_BASED
+      roles: MASTER
+      scope: delete
+
+
+#########################################
+######### TENANT ENDPOINTS ##############
+#########################################

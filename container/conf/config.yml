@@ -1,0 +1,26 @@
+app:
+  app-id: sel
+  id: 3
+client:
+  id: client
+  secret: secret
+tenant:
+  database:
+    init-script-filename: initdb.sh
+liquibase:
+  tenant-changelog: 'classpath:/changelog/tenant/changelog-v2.0.xml'
+  enabled: true
+  rollback-sql: 'rollback-sql-temp.sql'
+  test:
+    tenant-changelog: 'classpath:/db/changelog-integration-test.xml'
+scheduler:
+  pool-size: 10
+auth-server:
+  endpoint:
+    base: http://localhost:8080
+
+
+
+default-conf:
+
+

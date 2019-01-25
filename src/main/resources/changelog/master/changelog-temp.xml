@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+    <changeSet author="mdzahidraza (generated)" id="1538748894347-6">
+        <createTable tableName="category">
+            <column autoIncrement="true" name="id" type="BIGSERIAL">
+                <constraints primaryKey="true" primaryKeyName="category_pkey"/>
+            </column>
+            <column name="created_at" type="TIMESTAMP(29) WITHOUT TIME ZONE"/>
+            <column name="created_by" type="BIGINT"/>
+            <column name="last_modified_by" type="BIGINT"/>
+            <column name="modified_at" type="TIMESTAMP(29) WITHOUT TIME ZONE"/>
+            <column name="description" type="VARCHAR(255)"/>
+            <column name="name" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="mdzahidraza (generated)" id="1538748894347-7">
+        <createTable tableName="product">
+            <column autoIncrement="true" name="id" type="BIGSERIAL">
+                <constraints primaryKey="true" primaryKeyName="product_pkey"/>
+            </column>
+            <column name="created_at" type="TIMESTAMP(29) WITHOUT TIME ZONE"/>
+            <column name="created_by" type="BIGINT"/>
+            <column name="last_modified_by" type="BIGINT"/>
+            <column name="modified_at" type="TIMESTAMP(29) WITHOUT TIME ZONE"/>
+            <column name="description" type="VARCHAR(255)"/>
+            <column name="name" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="category_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="mdzahidraza (generated)" id="1538748894347-8">
+        <createTable tableName="rev_info">
+            <column name="id" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="timestamp" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="username" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet author="mdzahidraza (generated)" id="1538748894347-11">
+        <addPrimaryKey columnNames="id" constraintName="rev_info_pkey" tableName="rev_info"/>
+    </changeSet>
+    <changeSet author="mdzahidraza (generated)" id="1538748894347-15">
+        <addForeignKeyConstraint baseColumnNames="category_id" baseTableName="product" constraintName="fk1mtsbur82frn64de7balymq9s" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="category"/>
+    </changeSet>
+</databaseChangeLog>
