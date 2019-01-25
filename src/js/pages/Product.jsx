@@ -3,13 +3,10 @@ import React from "react";
 import { withStyles } from "@material-ui/core/styles";
 
 import {
-  TabbedHome,
   Create,
   Edit,
   List,
-  Show,
   SimpleForm,
-  SimpleShowLayout,
   TextInput,
   TextField,
   required,
@@ -76,33 +73,6 @@ export const EditProduct = withStyles(editStyle)(({ classes, ...props }) => {
     </Edit>
   );
 });
-
-const viewStyle = theme => ({});
-
-export const ViewProduct = withStyles(viewStyle)(({ classes, ...props }) => {
-  return (
-    <Show layout={layout} {...props}>
-      <SimpleShowLayout>
-        <TextField source="name" />
-        <ReferenceField source="category.id" reference="categories">
-          <TextField source="name" />
-        </ReferenceField>
-        <TextField source="description" />
-      </SimpleShowLayout>
-    </Show>
-  );
-});
-
-export const ProductLegacyHome = props => {
-  return (
-    <TabbedHome
-      show={ViewProduct}
-      create={CreateProduct}
-      edit={EditProduct}
-      {...props}
-    />
-  );
-};
 
 const homeStyle = theme => ({
   buttonEdit: {
