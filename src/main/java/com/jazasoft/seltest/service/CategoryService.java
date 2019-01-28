@@ -40,6 +40,15 @@ public class CategoryService {
         return categoryRepository.save(category);
     }
 
+    @Transactional(value="tenantTransactionManager")
+    public Category update(Category category){
+        Category category1=categoryRepository.findOne(category.getId());
+        category1.setName(category.getName());
+        category1.setDescription(category.getDescription());
+
+        return category1;
+    }
+
     public void delete(Long id) {
         categoryRepository.delete(id);
     }

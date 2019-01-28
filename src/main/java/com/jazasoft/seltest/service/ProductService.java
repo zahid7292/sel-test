@@ -41,6 +41,15 @@ public class ProductService {
         return productRepository.save(product);
     }
 
+    @Transactional (value="tenantTransactionManager")
+    public Product update(Product product){
+        Product product1=productRepository.findOne(product.getId());
+        product1.setName(product.getName());
+        product1.setCategory(product.getCategory());
+        product1.setDescription(product.getDescription());
+        return product1;
+    }
+
     public void delete(Long id) {
         productRepository.delete(id);
     }

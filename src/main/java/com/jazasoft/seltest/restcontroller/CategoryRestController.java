@@ -3,6 +3,7 @@ package com.jazasoft.seltest.restcontroller;
 import com.jazasoft.mtdb.specification.CustomRsqlVisitor;
 import com.jazasoft.seltest.ApiUrls;
 import com.jazasoft.seltest.model.Category;
+import com.jazasoft.seltest.repository.CategoryRepository;
 import com.jazasoft.seltest.service.CategoryService;
 import cz.jirutka.rsql.parser.RSQLParser;
 import cz.jirutka.rsql.parser.ast.Node;
@@ -13,6 +14,8 @@ import org.springframework.data.jpa.domain.Specification;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
+
 /**
  * Created by mdzahidraza on 28/06/17.
  */
@@ -21,6 +24,7 @@ import org.springframework.web.bind.annotation.*;
 public class CategoryRestController {
 
     private CategoryService categoryService;
+    private CategoryRepository categoryRepository;
 
     @Autowired
     public CategoryRestController(CategoryService categoryService) {
@@ -54,5 +58,21 @@ public class CategoryRestController {
     public ResponseEntity<?> saveCategory(@RequestBody Category category){
         category = categoryService.save(category);
         return ResponseEntity.ok(category);
+    }
+    @PutMapping(ApiUrls.URL_CATEGORIES_CATEGORY)
+    public ResponseEntity<?>updateCategory(@PathVariable("categoryId") Long categoryId,@Valid @RequestBody Category category){
+
+        category.setId(categoryId);
+        Category category1=categoryService.update(category);
+        return ResponseEntity.ok(category1);
+    }
+    @DeleteMapping(ApiUrls.URL_CATEGORIES_CATEGORY)
+    public ResponseEntity<?> deleteCategory(@PathVariable("categoryId") Long categoryId ){
+//        Category cat=categoryRepository.findOne(categoryId);
+//        if(cat==null){
+//            return ResponseEntity.notFound().build();
+//        }
+        categoryService.delete(categoryId);
+        return ResponseEntity.ok(categoryId);
     }
 }
