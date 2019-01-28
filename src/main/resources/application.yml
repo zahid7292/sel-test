@@ -8,12 +8,12 @@ spring:
   datasource:
     ###### PostgreSQL Configuration #######
     driverClassName: org.postgresql.Driver
-    url: jdbc:postgresql://localhost:8080/seltest_master
-    username: postgres
-    password: Hussain
+    url: jdbc:postgresql://localhost:5432/seltest_master
+    username: mdzahidraza
+    password: zahid
     platform: postgresql
     host: localhost
-    port: 8080
+    port: 5432
     masterdb: mtdbapp_master
 
   jpa:
@@ -41,6 +41,6 @@ spring:
 
 liquibase:
   enabled: true
-  rollback-file: 'src/main/resources/changelog/master/rollback-sql-temp.sql'
+  rollback-file: '/Users/mdzahidraza/projects/local-repo/sel-test/src/main/resources/changelog/master/rollback-sql-temp.sql'
 
 

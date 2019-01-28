@@ -13,8 +13,7 @@ import {
   minLength,
   Datagrid,
   EditButton,
-  ReferenceField,
-  DeleteButton
+  ReferenceField
 } from "jazasoft";
 
 import {
@@ -100,7 +99,7 @@ export const ProductModernHome = withStyles(homeStyle)(
           </ReferenceField>
           <TextField source="description" sortable={false} />
           <EditButton cellClassName={classes.buttonEdit} />
-          <DeleteButton cellClassName={classes.buttonDelete} />
+          {/* <DeleteButton cellClassName={classes.buttonDelete} /> */}
         </Datagrid>
       </List>
     );

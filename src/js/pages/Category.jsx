@@ -13,7 +13,6 @@ import {
   minLength,
   Datagrid,
   EditButton,
-  DeleteButton
 } from "jazasoft";
 
 const layout = "modern";
@@ -65,9 +64,8 @@ export const CategoryModernHome = withStyles(homeStyle)(
       <List {...props}>
         <Datagrid>
           <TextField source="name" />
-          <TextField source="description" />
           <EditButton cellClassName={classes.buttonEdit} />
-          <DeleteButton cellClassName={classes.buttonDelete} />
+          {/* <DeleteButton cellClassName={classes.buttonDelete} /> */}
         </Datagrid>
       </List>
     );

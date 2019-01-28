@@ -13,8 +13,6 @@ import org.springframework.data.jpa.domain.Specification;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import javax.validation.Valid;
-
 /**
  * Created by mdzahidraza on 28/06/17.
  */
@@ -56,16 +54,5 @@ public class ProductRestController {
     public ResponseEntity<?> saveProduct(@RequestBody Product product){
         product = productService.save(product);
         return ResponseEntity.ok(product);
-    }
-    @DeleteMapping(ApiUrls.URL_PRODUCTS_PRODUCT)
-    public ResponseEntity<?>deleteProduct(@PathVariable ("productId") Long productId){
-        productService.delete(productId);
-        return ResponseEntity.ok(productId);
-    }
-    @PutMapping(ApiUrls.URL_PRODUCTS_PRODUCT)
-    public ResponseEntity<?> updateProduct(@PathVariable("productId") Long productId,@Valid @RequestBody Product product){
-        product.setId(productId);
-        Product product1=productService.update(product);
-        return ResponseEntity.ok(product1);
     }
 }

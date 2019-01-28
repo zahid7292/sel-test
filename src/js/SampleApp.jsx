@@ -41,10 +41,7 @@ class App extends React.Component {
         i18nProvider={i18nProvider}
         logo={logo}
         avatar={avatar}
-        dashboard={(props) => <div>
-          <h1>Dashboard</h1>
-          <img src="img/executive-dashboard.png" height="500" weidth="1500" />
-        </div>}
+        dashboard={(props) => <div>Dashboard</div>}
       >
         <Resource
           name="categories"
